@@ -20,16 +20,13 @@ takeFive(explicit, iat, sessions, tasks, demo, strAsFtr = FALSE)
 \item{strAsFtr}{Boolean value for stringAsFactors options in importing data. Default to be FALSE.}
 }
 \value{
-If all five files are imported correctly, there will be five objects return as original dataset, and there are:
- explicit_origin, iat_origin, sessions_origin, tasks_origin, demo_origin.
+If all five files are imported correctly, there will be five objects return as original dataset, and there are: explicit_origin, iat_origin, sessions_origin, tasks_origin, demo_origin.
 }
 \description{
 \code{sum} Import the basic five dataset files generated from PI.
 }
 \details{
-This function is used to read the all five original dataset files from PI.
-It is equal to the read function but name differently as a special function
-only for PI dataset.
+This function is used to read the all five original dataset files from PI. It is equal to the read function but name differently as a special function only for PI dataset.
 }
 \examples{
  \dontrun{
@@ -37,8 +34,7 @@ only for PI dataset.
    }
 }
 \seealso{
-\code{\link{~/Requirements}} For files naming consistency and 
- dataset cleaning requirements.
+\code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 }
 \keyword{import}
 \keyword{read}
