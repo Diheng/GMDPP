@@ -5,7 +5,6 @@
 #' This function is used to read the all five original dataset files from PI.
 #' It is equal to the read function but name differently as a special function
 #' only for PI dataset. 
-#'
 #' @param explicit A string for the path of explicit.txt file or the equivalent.
 #' @param iat A string for the path of iat.txt file or the equivalent.
 #' @param sessions A string for the path of sessions.txt file or the equivalent.
