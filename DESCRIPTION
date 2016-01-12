@@ -1,8 +1,14 @@
 Package: GMDPP
-Title: What the Package Does (one line, title case)
+Title: General MTurk Dataset Preparation for PACT Lab
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.2)
-License: What license is it under?
+Authors@R: person("Diheng", "Zhang", email = "dihengz@gmail.com", role = c("aut", "cre"))
+Description: This package is for preparing a dataset from MTurk or PIMH,
+    including: clean up formats, merging cases, export necessary objects that helps
+    later data analysis(etc. Lists of unfinished IDs,completed IDs, duplicated
+    entries IDs). Maybe will include functions that automatically clean up
+    duplications.
+Depends:
+    R (>= 3.2.2)
+License: GNU GENERAL PUBLIC LICENSE Version 2, June 1991
 LazyData: true
+RoxygenNote: 5.0.1.9000
