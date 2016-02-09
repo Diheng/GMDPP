@@ -27,12 +27,13 @@ prepare <- function(rawPack,type) {
 		ID_Sessions <- rawPack$Sessions[order(rawPack$Sessions$session_id),]
 
 		# Get participant's MTurk ID Table
-		group <- strsplit(as.character(ID_Sessions$referrer), "!!!", fixed = T)
-		maxLen <- max(sapply(group, length))
-		group_try <- do.call('data.frame', lapply(group, function(x)c(x, rep(NA, maxLen-length(x)))))
-		MTurk_ID <- t(group_try)[,3]
-		ID <- cbind(ID_Sessions$session_id, MTurk_ID)
-		colnames(ID) <- c("session_id","participant_id")
+		id <- strsplit(as.character(ID_Sessions$referrer), "!!!", fixed = T)
+		maxLen <- max(sapply(id, length))
+		id_try <- do.call('data.frame', lapply(id, function(x)c(x, rep(NA, maxLen-length(x)))))
+		MTurk_ID <- t(id_try)[,3]
+		HIT_ID <- t(id_try)[,2]
+		ID <- cbind(ID_Sessions$session_id, MTurk_ID, HIT_ID)
+		colnames(ID) <- c("session_id","participant_id", "HIT_id")
 
 		# Add participant_id and Sort all the tables
 		# Explicit: Get rid of "feedback" "text" "d"
