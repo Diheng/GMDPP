@@ -4,20 +4,10 @@
 \alias{prepare}
 \title{prepare Function}
 \usage{
-prepare(explicit, iat, sessions, tasks, demo, type)
+prepare(rawPack)
 }
 \arguments{
-\item{explicit}{A string for the path of explicit.txt file or the equivalent.}
-
-\item{iat}{A string for the path of iat.txt file or the equivalent.}
-
-\item{sessions}{A string for the path of sessions.txt file or the equivalent.}
-
-\item{tasks}{A string for the path of sessionTasks.txt file or the equivalent.}
-
-\item{demo}{A string for the path of demographics.txt file or the equivalent.}
-
-\item{type}{A variable indicating data collection procedure. Possible value: mTurk, PI, PIMH}
+\item{rawPack}{A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).}
 }
 \value{
 To Be Specified.
@@ -26,11 +16,15 @@ To Be Specified.
 \code{sum}
 }
 \details{
-This is the main function of GMDPP package. It will take all the standard files you will get from PI or MTurk, transform them into formats that required by PI reseseach team(Insert link here). I t will also return necessary variables that include information that you will find handy in later data analysis.
+This is the main function of GMDPP package. It will take the raw data object
+you get from the takeFive, transform them into formats that required
+by PI reseseach team(Insert link here). It will also return necessary variables
+that include information that you will find handy in later data cleaning.
 }
 \examples{
  \dontrun{
-     prepare('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt', 'mTurk')
+		rawData <- takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
+     prepare(rawData)
    }
 }
 \seealso{

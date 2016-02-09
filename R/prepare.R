@@ -2,24 +2,23 @@
 #'
 #' \code{sum}
 #'
-#' This is the main function of GMDPP package. It will take all the standard files you will get from PI or MTurk, transform them into formats that required by PI reseseach team(Insert link here). I t will also return necessary variables that include information that you will find handy in later data analysis.
-#' @param type A variable indicating data collection procedure. Possible value: mTurk, PI, PIMH
-#' @param explicit A string for the path of explicit.txt file or the equivalent.
-#' @param iat A string for the path of iat.txt file or the equivalent.
-#' @param sessions A string for the path of sessions.txt file or the equivalent.
-#' @param tasks A string for the path of sessionTasks.txt file or the equivalent.
-#' @param demo A string for the path of demographics.txt file or the equivalent.
+#' This is the main function of GMDPP package. It will take the raw data object
+#' you get from the takeFive, transform them into formats that required
+#' by PI reseseach team(Insert link here). It will also return necessary variables
+#' that include information that you will find handy in later data cleaning.
+#' @param rawPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).
 #' @keywords Data pre-analysis
 #' @export
 #' @examples
 #'  \dontrun{
-#'      prepare('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt', 'mTurk')
+#'			rawData <- takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
+#'      prepare(rawData)
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 #' @return To Be Specified.
 
 
-prepare <- function(rawPack,type) {
+prepare <- function(rawPack) {
 		sortedPack <- list()
 		class(sortedPack) <- "PI"
 
@@ -72,5 +71,6 @@ prepare <- function(rawPack,type) {
 		sortedPack$IAT <- sortedIAT
 		sortedPack$participatedID <- participatedID
 		sortedPack$participatedNum <- participatedNum
+		sortedPack$Type <- rawPack$Type
 		return(sortedPack)
 }

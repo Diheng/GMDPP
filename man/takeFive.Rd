@@ -4,7 +4,7 @@
 \alias{takeFive}
 \title{Take Five Function}
 \usage{
-takeFive(explicit, iat, sessions, tasks, demo, strAsFtr = FALSE)
+takeFive(explicit, iat, sessions, tasks, demo, type, strAsFtr = FALSE)
 }
 \arguments{
 \item{explicit}{A string for the path of explicit.txt file or the equivalent.}
@@ -17,6 +17,8 @@ takeFive(explicit, iat, sessions, tasks, demo, strAsFtr = FALSE)
 
 \item{demo}{A string for the path of demographics.txt file or the equivalent.}
 
+\item{type}{A variable indicating data collection procedure. Possible value: mTurk, PI, PIMH}
+
 \item{strAsFtr}{Boolean value for stringAsFactors options in importing data. Default to be FALSE.}
 }
 \value{
@@ -26,11 +28,13 @@ If all five files are imported correctly, there will be five objects return as o
 \code{sum} Import the basic five dataset files generated from PI.
 }
 \details{
-This function is used to read the all five original dataset files from PI. It is equal to the read function but name differently as a special function only for PI dataset.
+This function is used to read the all five original dataset files from PI.
+It is equal to the read function but name differently as a special function
+only for PI dataset. An object will be returned with all the raw datasets.
 }
 \examples{
  \dontrun{
-     takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt')
+     takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
    }
 }
 \seealso{
