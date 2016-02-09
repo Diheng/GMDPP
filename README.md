@@ -9,11 +9,12 @@ What has done here:
 
 1\ Read in all the files necessary for data analysis
 
-2\
+2\ Prepare the data
+
+3\
 
 What need to be added soon:
 
-2\ Prepare the data
 
 3\ cleansing the data
 
@@ -36,4 +37,7 @@ Toolbox kits:
 
 2\ takeFive - read in all the data files in correct form for data cleansing.
 
-3\
+3\ prepare - read in data object, get rid of unnecessary variables, merge with
+  previous sessions, add two components to dataset: participatedID, participatedNum
+
+4\ 
