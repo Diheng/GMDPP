@@ -1,6 +1,6 @@
 #' summary Function
 #'
-#' \code{Summary method for PI objects.}
+#' Summary method for PI objects.
 #'
 #' This is a small function to summary main information out of a PI object.
 #' @param rawPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).

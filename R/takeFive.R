@@ -1,6 +1,6 @@
 #' takeFive Function
 #'
-#' \code{Import the basic five dataset files generated from PI.}
+#' Import the basic five dataset files generated from PI.
 #'
 #' This function is used to read the all five original dataset files from PI.
 #' It is equal to the read function but name differently as a special function

@@ -13,7 +13,7 @@ prepare(rawPack)
 If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 }
 \description{
-\code{Basic handling for PI raw datasets.}
+Basic handling for PI raw datasets.
 }
 \details{
 This is one of the main function of GMDPP package. It will take the raw data object

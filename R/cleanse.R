@@ -1,6 +1,6 @@
 #' cleanse Function
 #'
-#' \code{Main data cleaning function for PI datasets.}
+#' Main data cleaning function for PI datasets.
 #'
 #' This is one of the main function of GMDPP package. It will take the sorted
 #' data object and automatically detect the unfinished and duplicated cases.

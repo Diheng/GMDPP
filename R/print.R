@@ -1,6 +1,6 @@
 #' print.PI Function
 #'
-#' \code{Rrint method for PI objects.}
+#' Print method for PI objects.
 #'
 #' This is a small function to help print the PI object more effectively.
 #' @param rawPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).

@@ -13,7 +13,7 @@
 To Be Specified.
 }
 \description{
-\code{Summary method for PI objects.}
+Summary method for PI objects.
 }
 \details{
 This is a small function to summary main information out of a PI object.

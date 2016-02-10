@@ -1,6 +1,6 @@
 #' prepare Function
 #'
-#' \code{Basic handling for PI raw datasets.}
+#' Basic handling for PI raw datasets.
 #'
 #' This is one of the main function of GMDPP package. It will take the raw data object
 #' you get from the takeFive, transform them into formats that required

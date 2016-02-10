@@ -11,20 +11,27 @@ What has done here:
 
 2\ Prepare the data
 
-3\
-
-What need to be added soon:
-
-
 3\ cleansing the data
 
 4\ Print methods
+
+5\ Summary methods
+
+
+
+What need to be added soon:
 
 5\ Documentation
 
 6\ transform
 
 7\ autoPilot
+
+8\ Plot methods
+
+9\ Readme create readme documentation automatically
+
+10\ Export export completed datasets
 
 
 This is the plan:
@@ -40,4 +47,10 @@ Toolbox kits:
 3\ prepare - read in data object, get rid of unnecessary variables, merge with
   previous sessions, add two components to dataset: participatedID, participatedNum
 
-4\ 
+4\ cleanse - read in data object, clean up unfinished data, pick up duplicated data,
+  add more components to data object: completedID, completedNum, duplicatedID,
+  duplicatedNum
+
+5\ print.PI -
+
+6\ summary.PI - 

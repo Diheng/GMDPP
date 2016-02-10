@@ -13,7 +13,7 @@ cleanse(sortedPack)
 If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 }
 \description{
-\code{Main data cleaning function for PI datasets.}
+Main data cleaning function for PI datasets.
 }
 \details{
 This is one of the main function of GMDPP package. It will take the sorted

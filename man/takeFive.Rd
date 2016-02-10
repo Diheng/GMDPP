@@ -26,7 +26,7 @@ takeFive(explicit, iat, sessions, tasks, demo, type = "MTurk",
 If all five files are imported correctly, there will be an objects return as original datasets, which contain elements: $Explicit, $IAT, $Sessions, $Tasks and $Demo.
 }
 \description{
-\code{Import the basic five dataset files generated from PI.}
+Import the basic five dataset files generated from PI.
 }
 \details{
 This function is used to read the all five original dataset files from PI.

@@ -13,7 +13,7 @@
 To Be Specified.
 }
 \description{
-\code{Rrint method for PI objects.}
+Print method for PI objects.
 }
 \details{
 This is a small function to help print the PI object more effectively.
