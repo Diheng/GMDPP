@@ -35,12 +35,14 @@ cleanse <- function(sortedPack) {
   # very unlikly that his/her data will have less session that usual. The criteria
   # No.2 is used as precaucious move here.)
 
-  tempID <- sortedPack$Tasks[which(sortedPack$Tasks$task_id == 'debriefing'),]$participant_id
   tasksNum <- sortedPack$Tasks[which(sortedPack$Tasks$task_id == 'debriefing'),]$task_number
-  endNote <- strtoi(tasksNum[1]) + 1
+  endNote <- strtoi(tasksNum[1])
+  lastSession <- strtoi(tasksNum[1]) - 1
+  tempID <- sortedPack$Tasks[which(sortedPack$Tasks$task_number == toString(lastSession)),]$participant_id
+
   uniqueID <- unique(tempID)
   tasksCount <- sapply(uniqueID, function(x) nrow(sortedPack$Tasks[which(sortedPack$Tasks$participant_id == x),]))
-  if (length(which(tasksCount < endNote))==0) (completedID <- uniqueID) else (completedID <- uniqueID[-which(tasksCount < endNote)])
+  if (length(which(tasksCount <= endNote))==0) (completedID <- uniqueID) else (completedID <- uniqueID[-which(tasksCount <= endNote)])
   completedNum <- length(completedID)
 
   # Subsetting all the datasets with only completed participants' data
@@ -54,8 +56,10 @@ cleanse <- function(sortedPack) {
   # Definition of duplication: One participant ID complete more task session that he/she need.
   # This is a very conservative criteria and you risk getting rid of useful information
   # if you choose to clean them all out (by default)
-  duplicatedNum <- length(which(tasksCount > endNote))
-  if (duplicatedNum != 0) duplicatedID <- uniqueID[which(tasksCount > endNote)] else duplicatedID <- NA
+  duplicatedNum <- length(which(tasksCount > (endNote + 1)))
+  if (duplicatedNum!= 0) duplicatedID <- uniqueID[which(tasksCount > (endNote + 1))] else duplicatedID <- NA
+  
+
   duplicatedRatio <- duplicatedNum / completedNum
   cleanedID <- completedID[-which(completedID %in% duplicatedID)]
   cleanedNum <- length(cleanedID)

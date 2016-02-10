@@ -30,10 +30,5 @@ takeFive <- function(explicit,iat,sessions,tasks,demo,type = "MTurk", strAsFtr =
 	rawPack$Tasks <- read.delim(tasks, stringsAsFactors=strAsFtr)
 	rawPack$Demo <- read.delim(demo, stringsAsFactors=strAsFtr)
 	rawPack$Type <- type
-	View(rawPack$Explicit)
-	View(rawPack$IAT)
-	View(rawPack$Sessions)
-	View(rawPack$Tasks)
-	View(rawPack$Demo)
 	return(rawPack)
 }

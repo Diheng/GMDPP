@@ -4,7 +4,8 @@
 \alias{takeFive}
 \title{Take Five Function}
 \usage{
-takeFive(explicit, iat, sessions, tasks, demo, type, strAsFtr = FALSE)
+takeFive(explicit, iat, sessions, tasks, demo, type = "MTurk",
+  strAsFtr = FALSE)
 }
 \arguments{
 \item{explicit}{A string for the path of explicit.txt file or the equivalent.}
