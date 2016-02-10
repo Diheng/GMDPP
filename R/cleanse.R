@@ -1,6 +1,6 @@
-#' unfinished and duplicated cases cleaning Function
+#' cleanse Function
 #'
-#' \code{sum}
+#' \code{Main data cleaning function for PI datasets.}
 #'
 #' This is one of the main function of GMDPP package. It will take the sorted
 #' data object and automatically detect the unfinished and duplicated cases.
@@ -12,7 +12,7 @@
 #' and start cleaning duplicated data with the information returned(semi-cleaned data object and
 #' the duplicatedNum and duplicatedID variables)
 #' @param sortedPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables like participatedID, participatedNum etc(optional).
-#' @keywords Data pre-analysis
+#' @keywords Data cleaning
 #' @export
 #' @examples
 #'  \dontrun{
@@ -21,7 +21,7 @@
 #'      cleanse(sortedData)
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
-#' @return To Be Specified.
+#' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 
 cleanse <- function(sortedPack) {
   cleanedPack <- list()
@@ -58,7 +58,7 @@ cleanse <- function(sortedPack) {
   # if you choose to clean them all out (by default)
   duplicatedNum <- length(which(tasksCount > (endNote + 1)))
   if (duplicatedNum!= 0) duplicatedID <- uniqueID[which(tasksCount > (endNote + 1))] else duplicatedID <- NA
-  
+
 
   duplicatedRatio <- duplicatedNum / completedNum
   cleanedID <- completedID[-which(completedID %in% duplicatedID)]

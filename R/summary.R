@@ -1,13 +1,10 @@
-#' Summary method Function
+#' summary Function
 #'
-#' \code{sum}
+#' \code{Summary method for PI objects.}
 #'
-#' This is the main function of GMDPP package. It will take the raw data object
-#' you get from the takeFive, transform them into formats that required
-#' by PI reseseach team(Insert link here). It will also return necessary variables
-#' that include information that you will find handy in later data cleaning.
+#' This is a small function to summary main information out of a PI object.
 #' @param rawPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).
-#' @keywords Data pre-analysis
+#' @keywords summary of datasets
 #' @export
 #' @examples
 #'  \dontrun{

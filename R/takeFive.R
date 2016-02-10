@@ -1,6 +1,6 @@
-#' Take Five Function
+#' takeFive Function
 #'
-#' \code{sum} Import the basic five dataset files generated from PI.
+#' \code{Import the basic five dataset files generated from PI.}
 #'
 #' This function is used to read the all five original dataset files from PI.
 #' It is equal to the read function but name differently as a special function
@@ -19,7 +19,7 @@
 #'      takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
-#' @return If all five files are imported correctly, there will be five objects return as original dataset, and there are: explicit_origin, iat_origin, sessions_origin, tasks_origin, demo_origin.
+#' @return If all five files are imported correctly, there will be an objects return as original datasets, which contain elements: $Explicit, $IAT, $Sessions, $Tasks and $Demo.
 
 takeFive <- function(explicit,iat,sessions,tasks,demo,type = "MTurk", strAsFtr = FALSE) {
 	rawPack <- list() # Build an object for dataset

@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.R
 \name{summary.PI}
 \alias{summary.PI}
-\title{Summary method Function}
+\title{summary Function}
 \usage{
 \method{summary}{PI}(dataPack)
 }
@@ -13,13 +13,10 @@
 To Be Specified.
 }
 \description{
-\code{sum}
+\code{Summary method for PI objects.}
 }
 \details{
-This is the main function of GMDPP package. It will take the raw data object
-you get from the takeFive, transform them into formats that required
-by PI reseseach team(Insert link here). It will also return necessary variables
-that include information that you will find handy in later data cleaning.
+This is a small function to summary main information out of a PI object.
 }
 \examples{
  \dontrun{
@@ -30,6 +27,7 @@ that include information that you will find handy in later data cleaning.
 \seealso{
 \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 }
-\keyword{Data}
-\keyword{pre-analysis}
+\keyword{datasets}
+\keyword{of}
+\keyword{summary}
 

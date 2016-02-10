@@ -1,12 +1,12 @@
 #' prepare Function
 #'
-#' \code{sum}
+#' \code{Basic handling for PI raw datasets.}
 #'
-#' This is the main function of GMDPP package. It will take the raw data object
+#' This is one of the main function of GMDPP package. It will take the raw data object
 #' you get from the takeFive, transform them into formats that required
 #' by PI reseseach team(Insert link here). It will also return necessary variables
 #' that include information that you will find handy in later data cleaning.
-#' @param rawPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).
+#' @param rawPack A PI object, included elements like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables(optional).
 #' @keywords Data pre-analysis
 #' @export
 #' @examples
@@ -15,7 +15,8 @@
 #'      prepare(rawData)
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
-#' @return To Be Specified.
+#' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
+
 
 
 prepare <- function(rawPack) {

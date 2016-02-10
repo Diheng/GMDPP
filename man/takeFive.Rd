@@ -2,7 +2,7 @@
 % Please edit documentation in R/takeFive.R
 \name{takeFive}
 \alias{takeFive}
-\title{Take Five Function}
+\title{takeFive Function}
 \usage{
 takeFive(explicit, iat, sessions, tasks, demo, type = "MTurk",
   strAsFtr = FALSE)
@@ -23,10 +23,10 @@ takeFive(explicit, iat, sessions, tasks, demo, type = "MTurk",
 \item{strAsFtr}{Boolean value for stringAsFactors options in importing data. Default to be FALSE.}
 }
 \value{
-If all five files are imported correctly, there will be five objects return as original dataset, and there are: explicit_origin, iat_origin, sessions_origin, tasks_origin, demo_origin.
+If all five files are imported correctly, there will be an objects return as original datasets, which contain elements: $Explicit, $IAT, $Sessions, $Tasks and $Demo.
 }
 \description{
-\code{sum} Import the basic five dataset files generated from PI.
+\code{Import the basic five dataset files generated from PI.}
 }
 \details{
 This function is used to read the all five original dataset files from PI.

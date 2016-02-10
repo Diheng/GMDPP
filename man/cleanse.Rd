@@ -2,7 +2,7 @@
 % Please edit documentation in R/cleanse.R
 \name{cleanse}
 \alias{cleanse}
-\title{unfinished and duplicated cases cleaning Function}
+\title{cleanse Function}
 \usage{
 cleanse(sortedPack)
 }
@@ -10,10 +10,10 @@ cleanse(sortedPack)
 \item{sortedPack}{A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables like participatedID, participatedNum etc(optional).}
 }
 \value{
-To Be Specified.
+If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 }
 \description{
-\code{sum}
+\code{Main data cleaning function for PI datasets.}
 }
 \details{
 This is one of the main function of GMDPP package. It will take the sorted
@@ -37,5 +37,5 @@ the duplicatedNum and duplicatedID variables)
 \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 }
 \keyword{Data}
-\keyword{pre-analysis}
+\keyword{cleaning}
 
