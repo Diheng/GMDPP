@@ -21,6 +21,8 @@ What has done here:
 
 What need to be added soon:
 
+4\ name of study, dataset collected date, dataset handled date, analysisBy
+
 5\ Documentation
 
 6\ transform
@@ -29,14 +31,14 @@ What need to be added soon:
 
 8\ Plot methods
 
-9\ Readme create readme documentation automatically
+9\ Readme - create readme documentation automatically
 
-10\ Export export completed datasets
+10\ Export - export completed datasets
 
+11\ code that handle demo dataset
 
-This is the plan:
+12\ code that handle different types of datasets (MTurk, finished; PI, unfinished; PIMH, unfinished)
 
-1\
 
 Toolbox kits:
 
@@ -53,4 +55,4 @@ Toolbox kits:
 
 5\ print.PI -
 
-6\ summary.PI - 
+6\ summary.PI -
