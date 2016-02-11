@@ -21,17 +21,21 @@ What has done here:
 
 What need to be added soon:
 
-4\ name of study, dataset collected date, dataset handled date, analysisBy
+4\ name of study, dataset collected date, dataset handled date, analysisBy, datatype
 
 5\ Documentation
 
-6\ transform
+6A\ transform
+
+6B\ merge
 
 7\ autoPilot
 
 8\ Plot methods
 
-9\ Readme - create readme documentation automatically
+9A\ Readme - create readme documentation automatically
+
+9B\ duplicate and unfinish -- separate this two functions
 
 10\ Export - export completed datasets
 
