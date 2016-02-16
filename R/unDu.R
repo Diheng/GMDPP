@@ -23,7 +23,7 @@
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 #' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 
-cleanse <- function(sortedPack) {
+unDu <- function(sortedPack) {
   cleanedPack <- list()
   class(cleanedPack) <- "PI"
 
@@ -31,7 +31,7 @@ cleanse <- function(sortedPack) {
   uniqueID <- sortedPack$participatedID
 
   # check function: check duplication
-  check <- function(x) {
+  checkDu <- function(x) {
     testDose <- testData[which(testData$participant_id == x),]
     flag <- sum(duplicated(testDose))
     if (flag > 0) {
@@ -42,7 +42,7 @@ cleanse <- function(sortedPack) {
   }
 
 
-  Dupli <- sapply(uniqueID, check)
+  Dupli <- sapply(uniqueID, checkDu)
 
   if (sum(Dupli) > 0) {
     duplicatedID <- uniqueID[Dupli]
@@ -60,7 +60,7 @@ cleanse <- function(sortedPack) {
   cleanedExplicit <- sortedPack$Explicit[sortedPack$Explicit$participant_id %in% unDuplicatedID,]
   cleanedSessions <- sortedPack$Sessions[sortedPack$Sessions$participant_id %in% unDuplicatedID,]
   cleanedTasks <- sortedPack$Tasks[sortedPack$Tasks$participant_id %in% unDuplicatedID,]
-  cleanedDemo <- sortedPack$Demo[sortedPack$Demo$participant_id %in% unDuplicatedID,]
+  cleanedDemo <- sortedPack$Demo # Need to be fixed
   cleanedIAT <- sortedPack$IAT[sortedPack$IAT$participant_id %in% unDuplicatedID,]
 
 

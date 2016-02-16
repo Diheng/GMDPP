@@ -2,7 +2,9 @@
 
 S3method(print,PI)
 S3method(summary,PI)
-export(cleanse)
+export(export)
 export(prepare)
 export(say_hello)
 export(takeFive)
+export(unDu)
+export(unFin)

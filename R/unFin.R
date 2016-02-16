@@ -23,7 +23,7 @@
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 #' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 
-cleanse <- function(sortedPack) {
+unFin <- function(sortedPack) {
 
   completedPack <- list()
   class(completedPack) <- "PI"
@@ -51,7 +51,7 @@ cleanse <- function(sortedPack) {
   completedExplicit <- sortedPack$Explicit[sortedPack$Explicit$participant_id %in% completedID,]
   completedSessions <- sortedPack$Sessions[sortedPack$Sessions$participant_id %in% completedID,]
   completedTasks <- sortedPack$Tasks[sortedPack$Tasks$participant_id %in% completedID,]
-  completedDemo <- sortedPack$Demo[sortedPack$Demo$participant_id %in% completedID,]
+  completedDemo <- sortedPack$Demo # Need to be fixed in the future
   completedIAT <- sortedPack$IAT[sortedPack$IAT$participant_id %in% completedID,]
 
  # Output-----------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ cleanse <- function(sortedPack) {
   sortedPack$completedID <- completedID
   sortedPack$completedNum <- completedNum
   sortedPack$unfinishedID <- unfinishedID
-  sortedPack$unfinishedNum <- unfinishedNum 
+  sortedPack$unfinishedNum <- unfinishedNum
 
   unfinishedRatio <- unfinishedNum / sortedPack$participatedNum
 
@@ -94,6 +94,6 @@ cleanse <- function(sortedPack) {
     #Return
     return(x)
   }
-  flag <- output(unfinishedRatio, unfinishedNum, participatedNum)
-  if (flag == "Y") return(completedPack) else return (completedPack)
+  flag <- output(unfinishedRatio, unfinishedNum, sortedPack$participatedNum)
+  if (flag == "Y") return(completedPack) else return (sortedPack)
 }
