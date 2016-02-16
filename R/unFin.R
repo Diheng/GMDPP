@@ -1,4 +1,4 @@
-#' cleanse Function
+#' unFinished Function
 #'
 #' Main data cleaning function for PI datasets.
 #'
@@ -24,8 +24,7 @@
 #' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
 
 cleanse <- function(sortedPack) {
-  cleanedPack <- list()
-  class(cleanedPack) <- "PI"
+
   completedPack <- list()
   class(completedPack) <- "PI"
 
@@ -45,34 +44,15 @@ cleanse <- function(sortedPack) {
   if (length(which(tasksCount <= endNote))==0) (completedID <- uniqueID) else (completedID <- uniqueID[-which(tasksCount <= endNote)])
   completedNum <- length(completedID)
 
+  unfinishedID <- sortedPack$participatedID[-which(sortedPack$participatedID %in% completedID)]
+  unfinishedNum <- length(unfinishedID)
+
   # Subsetting all the datasets with only completed participants' data
   completedExplicit <- sortedPack$Explicit[sortedPack$Explicit$participant_id %in% completedID,]
   completedSessions <- sortedPack$Sessions[sortedPack$Sessions$participant_id %in% completedID,]
   completedTasks <- sortedPack$Tasks[sortedPack$Tasks$participant_id %in% completedID,]
   completedDemo <- sortedPack$Demo[sortedPack$Demo$participant_id %in% completedID,]
   completedIAT <- sortedPack$IAT[sortedPack$IAT$participant_id %in% completedID,]
-
-  # Handle duplication
-  # Definition of duplication: One participant ID complete more task session that he/she need.
-  # This is a very conservative criteria and you risk getting rid of useful information
-  # if you choose to clean them all out (by default)
-  duplicatedNum <- length(which(tasksCount > (endNote + 1)))
-  if (duplicatedNum!= 0) duplicatedID <- uniqueID[which(tasksCount > (endNote + 1))] else duplicatedID <- NA
-
-
-  duplicatedRatio <- duplicatedNum / completedNum
-  cleanedID <- completedID[-which(completedID %in% duplicatedID)]
-  cleanedNum <- length(cleanedID)
-
-  # Subsetting all the datasets with only cleaned participants' data
-  cleanedExplicit <- sortedPack$Explicit[sortedPack$Explicit$participant_id %in% cleanedID,]
-  cleanedSessions <- sortedPack$Sessions[sortedPack$Sessions$participant_id %in% cleanedID,]
-  cleanedTasks <- sortedPack$Tasks[sortedPack$Tasks$participant_id %in% cleanedID,]
-  cleanedDemo <- sortedPack$Demo[sortedPack$Demo$participant_id %in% cleanedID,]
-  cleanedIAT <- sortedPack$IAT[sortedPack$IAT$participant_id %in% cleanedID,]
-
-
-
 
  # Output-----------------------------------------------------------------------------------------
 
@@ -88,39 +68,32 @@ cleanse <- function(sortedPack) {
   completedPack$participatedNum <- sortedPack$participatedNum
   completedPack$completedID <- completedID
   completedPack$completedNum <- completedNum
-  completedPack$duplicatedID <- duplicatedID
-  completedPack$duplicatedNum <- duplicatedNum
+  completedPack$unfinishedID <- unfinishedID
+  completedPack$unfinishedNum <- unfinishedNum
+  if (exists('duplicatedID',where=sortedPack)) completedPack$duplicatedID <- sortedPack$duplicatedID
+  if (exists('duplicatedNum',where=sortedPack)) completedPack$duplicatedNum <- sortedPack$duplicatedNum
+  if (exists('unDuplicatedID',where=sortedPack)) completedPack$unDuplicatedID <- sortedPack$unDuplicatedID
+  if (exists('unDuplicatedNum',where=sortedPack)) completedPack$unDuplicatedNum <- sortedPack$unDuplicatedNum
   completedPack$Type <- sortedPack$Type
 
 
+  # Added new reference variables for non-cleaned Objects
+  sortedPack$completedID <- completedID
+  sortedPack$completedNum <- completedNum
+  sortedPack$unfinishedID <- unfinishedID
+  sortedPack$unfinishedNum <- unfinishedNum 
 
-  #Output: Added these variables:
-  cleanedPack$Explicit <- cleanedExplicit
-  cleanedPack$Sessions <- cleanedSessions
-  cleanedPack$Tasks <- cleanedTasks
-  cleanedPack$Demo <- cleanedDemo
-  cleanedPack$IAT <- cleanedIAT
+  unfinishedRatio <- unfinishedNum / sortedPack$participatedNum
 
-  # Added new reference variables for simple cleaned Objects
-  cleanedPack$participatedID <- sortedPack$participatedID
-  cleanedPack$participatedNum <- sortedPack$participatedNum
-  cleanedPack$completedID <- completedID
-  cleanedPack$completedNum <- completedNum
-  cleanedPack$duplicatedID <- duplicatedID
-  cleanedPack$duplicatedNum <- duplicatedNum
-  cleanedPack$cleanedID <- cleanedID
-  cleanedPack$cleanedNum <- cleanedNum
-  cleanedPack$Type <- sortedPack$Type
-
-  output <- function(duplicatedRatio,duplicatedNum,completedNum){
+  output <- function(unfinishedRatio,unfinishedNum,participatedNum){
 
     #Ask for user input
-    info <- cat("The percentage of duplication is: ", duplicatedRatio*100,"%, ", duplicatedNum," out of ",completedNum," finished participants. Would you like to cleanout duplication automatically?[Y/N]")
+    info <- cat("The percentage of unfinished participants is: ", unfinishedRatio*100,"%, ", unfinishedNum," out of ",participatedNum," enrolled participants. Would you like to cleanout unfinished participants automatically?[Y/N]")
     x <- readline(prompt = info)
     while (!((x == "Y")|(x=="N"))) {x <- readline(prompt = "I don't get it. Would you like to cleanout duplication automatically?[Y/N]")}
     #Return
     return(x)
   }
-  flag <- output(duplicatedRatio, duplicatedNum, completedNum)
-  if (flag == "Y") return(cleanedPack) else return (completedPack)
+  flag <- output(unfinishedRatio, unfinishedNum, participatedNum)
+  if (flag == "Y") return(completedPack) else return (completedPack)
 }
