@@ -3,10 +3,8 @@
 #' Main data cleaning function for PI datasets.
 #'
 #' This is one of the main function of GMDPP package. It will take the sorted
-#' data object and automatically detect the unfinished and duplicated cases.
-#' Unfinished cases will be cleaned out by default, with cases' total number and IDs
-#' recorded. Duplicated cases will be counted and a ratio will be reported to screen
-#' as a reference for further data cleaning. You can choose to automatically
+#' data object and automatically detect the duplicated cases.
+#' You can choose to automatically
 #' clean out all the cases with duplicated data(suggested when the percetage of duplication
 #' is low and you get enough data for your analysis), or stop the auto cleaning
 #' and start cleaning duplicated data with the information returned(semi-cleaned data object and
@@ -18,7 +16,7 @@
 #'  \dontrun{
 #'			rawData <- takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
 #'      sortedData <- prepare(rawData)
-#'      cleanse(sortedData)
+#'      workingData <- unDu(sortedData)
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 #' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
@@ -95,10 +93,10 @@ unDu <- function(sortedPack) {
   sortedPack$Last_time <- Sys.time()
 
 
-  output <- function(duplicatedRatio,duplicatedNum,completedNum){
+  output <- function(duplicatedRatio,duplicatedNum,participatedNum){
 
     #Ask for user input
-    info <- cat("The percentage of duplication is: ", duplicatedRatio*100,"%, ", duplicatedNum," out of ",completedNum," finished participants. Would you like to cleanout duplication automatically?[Y/N]")
+    info <- cat("The percentage of duplication is: ", duplicatedRatio*100,"%, ", duplicatedNum," out of ",participatedNum," attent participants. Would you like to cleanout duplication automatically?[Y/N]")
     x <- readline(prompt = info)
     while (!((x == "Y")|(x=="N"))) {x <- readline(prompt = "I don't get it. Would you like to cleanout duplication automatically?[Y/N]")}
     #Return

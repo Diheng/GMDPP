@@ -27,7 +27,7 @@ export <- function(readyPack) {
   }
   collectedDate <- function(){
     #Ask for user input
-    info <- cat("Data collected by?:")
+    info <- cat("Data collected by(Date)?:")
     x <- readline(prompt = info)
     #Return
     return(x)

@@ -12,7 +12,7 @@
 #' @examples
 #'  \dontrun{
 #'			rawData <- takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
-#'      prepare(rawData)
+#'      sortedData <- prepare(rawData)
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 #' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.

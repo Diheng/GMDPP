@@ -3,14 +3,10 @@
 #' Main data cleaning function for PI datasets.
 #'
 #' This is one of the main function of GMDPP package. It will take the sorted
-#' data object and automatically detect the unfinished and duplicated cases.
-#' Unfinished cases will be cleaned out by default, with cases' total number and IDs
-#' recorded. Duplicated cases will be counted and a ratio will be reported to screen
-#' as a reference for further data cleaning. You can choose to automatically
-#' clean out all the cases with duplicated data(suggested when the percetage of duplication
-#' is low and you get enough data for your analysis), or stop the auto cleaning
-#' and start cleaning duplicated data with the information returned(semi-cleaned data object and
-#' the duplicatedNum and duplicatedID variables)
+#' data object and automatically detect the unfinished cases. You can choose whether
+#' unfinished cases will be cleaned out, with cases' total number and IDs
+#' recorded.
+#'
 #' @param sortedPack A PI object, included subfields like Explicit, Sessions, Tasks, IAT and Demo which representing the original five datasets(required to process) and further addon variables like participatedID, participatedNum etc(optional).
 #' @keywords Data cleaning
 #' @export
@@ -18,7 +14,7 @@
 #'  \dontrun{
 #'			rawData <- takeFive('~/explicit.txt','~/iat.txt','~/sessions.txt','~/sessionTasks.txt','~/demographics.txt','mTurk')
 #'      sortedData <- prepare(rawData)
-#'      cleanse(sortedData)
+#'      workingData <- unFin(sortedData)
 #'    }
 #' @seealso  \code{\link{~/Requirements}} For files naming consistency and dataset cleaning requirements.
 #' @return If it works correctly, there will be an objects return as original datasets and extra elements for reference. They are: $Explicit, $IAT, $Sessions, $Tasks and $Demo for actual datasets, and $participant_id $participatedNum $completedID $completedNum etc.
