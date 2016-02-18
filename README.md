@@ -31,31 +31,55 @@ Reserved elements in a PI Object:
 ---------------------------------
 
 **Basic datasets:**
+
 **$Explicit** explicit data files
+
 **$IAT** iat data files
+
 **$Demo** demographics data files
+
 **$Tasks** sessionTasks data files
+
 **$Sessions** sessions data files
 
+
 **Meta information:**
+
 **$Name study** Name
+
 **$Handled_by** person who cleaned the data and should turned to for question
+
 **$Last_time** latest edited time
+
 **$Collected_date** dataset collected date
+
 **$Source** mTurk, PI or PIMH
+
 **$Type** raw_data/sorted_data/working_data/master_data
 
+
 **Index and statistic for data cleaning:**
+
 **$participatedID** who participated in study
+
 **$participatedNum** how many people participated
+
 **$duplicatedID** IDs for cases that have at least one duplicated data point
+
 **$duplicatedNum** number of cases that have at least one duplicated data point
+
 **$completedID** IDs for cases that finished all the tasks in the study
+
 **$completedNum** number of cases that finished all the tasks in the study
+
 **$unfinishedID** self-explained
+
 **$unfinishedNum** self-explained
+
 **$unDuplicatedID** self-explained
+
 **$unDuplicatedNum** self-explained
+
 
 *Elements could be added anytime, and all elements that is a data.frame will be printed and exported when the corresponding method is called. Not all the elements will be in used by functions in the package.*
 
