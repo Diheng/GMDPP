@@ -78,7 +78,9 @@ unDu <- function(sortedPack) {
   cleanedPack$unDuplicatedNum <- unDuplicatedNum
   cleanedPack$duplicatedID <- duplicatedID
   cleanedPack$duplicatedNum <- duplicatedNum
-  cleanedPack$Type <- sortedPack$Type
+  cleanedPack$Source <- sortedPack$Source
+  cleanedPack$Type <- "non_duplicated_only_data"
+  cleanedPack$Last_time <- Sys.time()
   if (exists('completedID',where=sortedPack)) cleanedPack$completedID <- sortedPack$completedID
   if (exists('completedNum',where=sortedPack)) cleanedPack$completedNum <- sortedPack$completedNum
   if (exists('unfinishedID',where=sortedPack)) cleanedPack$unfinishedID <- sortedPack$unfinishedID
@@ -90,6 +92,7 @@ unDu <- function(sortedPack) {
   sortedPack$unDuplicatedNum <- unDuplicatedNum
   sortedPack$duplicatedID <- duplicatedID
   sortedPack$duplicatedNum <- duplicatedNum
+  sortedPack$Last_time <- Sys.time()
 
 
   output <- function(duplicatedRatio,duplicatedNum,completedNum){

@@ -72,6 +72,8 @@ prepare <- function(rawPack) {
 		sortedPack$IAT <- sortedIAT
 		sortedPack$participatedID <- participatedID
 		sortedPack$participatedNum <- participatedNum
-		sortedPack$Type <- rawPack$Type
+		sortedPack$Source <- rawPack$Source
+		sortedPack$Type <- "sorted_data"
+		sortedPack$Last_time <- Sys.time()
 		return(sortedPack)
 }

@@ -74,7 +74,9 @@ unFin <- function(sortedPack) {
   if (exists('duplicatedNum',where=sortedPack)) completedPack$duplicatedNum <- sortedPack$duplicatedNum
   if (exists('unDuplicatedID',where=sortedPack)) completedPack$unDuplicatedID <- sortedPack$unDuplicatedID
   if (exists('unDuplicatedNum',where=sortedPack)) completedPack$unDuplicatedNum <- sortedPack$unDuplicatedNum
-  completedPack$Type <- sortedPack$Type
+  completedPack$Source <- sortedPack$Source
+  completedPack$Type <- "completed_only_data"
+  completedPack$Last_time <- Sys.time()
 
 
   # Added new reference variables for non-cleaned Objects
@@ -82,6 +84,7 @@ unFin <- function(sortedPack) {
   sortedPack$completedNum <- completedNum
   sortedPack$unfinishedID <- unfinishedID
   sortedPack$unfinishedNum <- unfinishedNum
+  sortedPack$Last_time <- Sys.time()
 
   unfinishedRatio <- unfinishedNum / sortedPack$participatedNum
 

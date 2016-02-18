@@ -4,8 +4,8 @@
 \alias{takeFive}
 \title{takeFive Function}
 \usage{
-takeFive(explicit, iat, sessions, tasks, demo, type = "MTurk",
-  strAsFtr = FALSE)
+takeFive(explicit, iat, sessions, tasks, demo, source = "MTurk",
+  type = "raw_data", strAsFtr = FALSE)
 }
 \arguments{
 \item{explicit}{A string for the path of explicit.txt file or the equivalent.}
@@ -18,7 +18,9 @@ takeFive(explicit, iat, sessions, tasks, demo, type = "MTurk",
 
 \item{demo}{A string for the path of demographics.txt file or the equivalent.}
 
-\item{type}{A variable indicating data collection procedure. Possible value: mTurk, PI, PIMH}
+\item{source}{A variable indicating data collection procedure. Possible value: mTurk, PI, PIMH}
+
+\item{type}{A variable indicating the data stage}
 
 \item{strAsFtr}{Boolean value for stringAsFactors options in importing data. Default to be FALSE.}
 }

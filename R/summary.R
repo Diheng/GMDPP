@@ -16,7 +16,7 @@
 
 summary.PI <- function(dataPack) {
   cat("---------------------\n")
-  cat("The dataset is from",dataPack$Type,". Basic info see below:\n")
+  cat("The dataset is from",dataPack$Source,". Data Cleaning Stage: ", dataPack$Type, ". Last editing time: ", as.character(as.POSIXlt(dataPack$Last_time)),". Basic info see below:\n")
   if (exists('participatedNum',where=dataPack)) cat("---------------------\n\t",dataPack$participatedNum,"participants took the experiment.\n\n")
   if (exists('completedNum',where=dataPack)) {
     cat("\t",dataPack$completedNum,"participants finished the experiment.\n")

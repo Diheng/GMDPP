@@ -21,7 +21,9 @@ print.PI <- function(dataPack) {
   View(dataPack$Tasks)
   View(dataPack$IAT)
   View(dataPack$Demo)
-  cat("The dataset is from ",dataPack$Type,"\n")
+  cat("The dataset is from ",dataPack$Source,"\n")
+  cat("Data Cleaning Stage: ", dataPack$Type, "\n")
+  cat("Last editing time: ", as.character(as.POSIXlt(dataPack$Last_time)),"\n")
   output <- function(){
 
     #Ask for user input
