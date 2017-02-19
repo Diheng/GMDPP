@@ -26,14 +26,20 @@ prepare <- function(rawPack) {
 		# Sort Sessions files and prepare to get the MTurk ID
 		ID_Sessions <- rawPack$Sessions[order(rawPack$Sessions$session_id),]
 
+
 		# Get participant's MTurk ID Table
-		id <- strsplit(as.character(ID_Sessions$referrer), "!!!", fixed = T)
-		maxLen <- max(sapply(id, length))
-		id_try <- do.call('data.frame', lapply(id, function(x)c(x, rep(NA, maxLen-length(x)))))
-		MTurk_ID <- t(id_try)[,3]
-		HIT_ID <- t(id_try)[,2]
-		ID <- cbind(ID_Sessions$session_id, MTurk_ID, HIT_ID)
-		colnames(ID) <- c("session_id","participant_id", "HIT_id")
+		if (rawPack$Source == 'MTurk') {
+			id <- strsplit(as.character(ID_Sessions$referrer), "!!!", fixed = T)
+			maxLen <- max(sapply(id, length))
+			id_try <- do.call('data.frame', lapply(id, function(x)c(x, rep(NA, maxLen-length(x)))))
+			MTurk_ID <- t(id_try)[,3]
+			HIT_ID <- t(id_try)[,2]
+			ID <- cbind(ID_Sessions$session_id, MTurk_ID, HIT_ID)
+			colnames(ID) <- c("session_id","participant_id","HIT_id")
+		} else {
+			participant_id <- ID_Sessions$session_id
+			ID <- as.data.frame(cbind(session_id = ID_Sessions$session_id, participant_id=participant_id))
+		}
 
 		# Add participant_id and Sort all the tables
 		# Explicit: Get rid of "feedback" "text" "d"
